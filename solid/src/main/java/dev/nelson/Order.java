@@ -35,18 +35,18 @@ public class Order {
         return this.items.stream().map(item -> item.getQuantity() * item.getPrice()).reduce(0.0, (a, b) -> a + b);
     }
 
-    public void pay(final String paymentType, final String securityCode) {
-        if (paymentType.equals("debit")) {
-            System.out.println("Processing debit payment type");
-            System.out.println("Verifying security code: " + securityCode);
-            this.orderStatus = OrderStatus.PAID;
-        } else if (paymentType.equals("credit")) {
-            System.out.println("Processing credit payment type");
-            System.out.println("Verifying security code: " + securityCode);
-            this.orderStatus = OrderStatus.PAID;
-        } else {
-            throw new RuntimeException("Unkown payment type: " + paymentType);
-        }
-    }
+    // public void pay(final String paymentType, final String securityCode) {
+    //     if (paymentType.equals("debit")) {
+    //         System.out.println("Processing debit payment type");
+    //         System.out.println("Verifying security code: " + securityCode);
+    //         this.orderStatus = OrderStatus.PAID;
+    //     } else if (paymentType.equals("credit")) {
+    //         System.out.println("Processing credit payment type");
+    //         System.out.println("Verifying security code: " + securityCode);
+    //         this.orderStatus = OrderStatus.PAID;
+    //     } else {
+    //         throw new RuntimeException("Unkown payment type: " + paymentType);
+    //     }
+    // }
 
 }

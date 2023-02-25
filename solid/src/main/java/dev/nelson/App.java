@@ -1,9 +1,5 @@
 package dev.nelson;
 
-/**
- * Hello world!
- *
- */
 public class App {
     public static void main(String[] args) {
         Order order = new Order();
@@ -13,6 +9,8 @@ public class App {
         order.addItem(new Item("USB cable", 2, 5));
 
         System.out.println(order.totalPrice());
-        order.pay("debit", "012341");
+
+        PaymentProcessor paymentProcessor = new DebitPaymentProcessor();
+        paymentProcessor.pay(order, "123321");        
     }
 }
