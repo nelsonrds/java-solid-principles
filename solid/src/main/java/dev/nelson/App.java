@@ -1,5 +1,9 @@
 package dev.nelson;
 
+import dev.nelson.Payment.DebitPaymentProcessor;
+import dev.nelson.Payment.PaymentProcessor;
+import dev.nelson.Payment.PaypalPaymentProcessor;
+
 public class App {
     public static void main(String[] args) {
         Order order = new Order();
@@ -10,7 +14,7 @@ public class App {
 
         System.out.println(order.totalPrice());
 
-        PaymentProcessor paymentProcessor = new DebitPaymentProcessor();
-        paymentProcessor.pay(order, "123321");        
+        PaymentProcessor paymentProcessor = new PaypalPaymentProcessor("e@hi.t");
+        paymentProcessor.pay(order);
     }
 }
