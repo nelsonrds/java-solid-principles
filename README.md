@@ -17,3 +17,9 @@ To fix this we can add to the constructor of each paymentprocessors types the di
 In the class PaymentProcessor if we add another method, for example sms authentication, we can just implement it in the sub classes and that's it.
 The problem is that the credit card doesn't have two factor authentication, therefore the implementation will be empty or will throw an error.
 - This will break the Interface Segragation principle, it states that instead of having a huge interface with multiple methods we should separate them into smaller ones.
+
+
+Instead of creating a new interface to handle different cases, we can use composition instead.
+- Interface Segregation variety using composition.
+Create a new class that handls the authentication and remove the interface PaymentProcessorSms.
+

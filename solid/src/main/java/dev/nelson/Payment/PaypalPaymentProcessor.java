@@ -1,34 +1,26 @@
 package dev.nelson.Payment;
 
-import javax.management.RuntimeErrorException;
-
 import dev.nelson.Order;
 import dev.nelson.OrderStatus;
 
-public class PaypalPaymentProcessor implements PaymentProcessorSMS {
+public class PaypalPaymentProcessor implements PaymentProcessor {
 
     private final String emailAddress;
-    private boolean verified;
+    private final SMSAuth smsAuth;
 
-    public PaypalPaymentProcessor(final String emailAddress) {
+    public PaypalPaymentProcessor(final String emailAddress, final SMSAuth smsAuth) {
         this.emailAddress = emailAddress;
-        this.verified = false;
+        this.smsAuth = smsAuth;
     }
 
     @Override
     public void pay(Order order) {
-        if (this.verified) {
+        if (!this.smsAuth.isAuthorized()) {
             throw new RuntimeException("Not authorized");
         }
         System.out.println("Processing paypal payment type");
         System.out.println("Verifying e-mail: " + emailAddress);
         order.setOrderStatus(OrderStatus.PAID);
-    }
-
-    @Override
-    public void authSMS(String code) {
-        System.out.println("Verifying SMS code: " + code);
-        this.verified = true;
     }
 
 }
