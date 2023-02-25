@@ -8,6 +8,9 @@ public interface PaymentProcessor {
 
     void pay(Order order);
 
+    // moved into the PaymentProcessorSMS interface
+    //void authSMS(String code);
+
     /**
      * This code below should be moved into the implementations
      */

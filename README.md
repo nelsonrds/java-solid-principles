@@ -12,3 +12,8 @@ To fix that we should create a class/interface and implement the payments, in th
 The method pay in the class PaymentProcessor has a securitycode input, this is a problem because the paypalpaymentprocessor doesn't need a security code.
 - This is violating the Liskov Substitution principle.
 To fix this we can add to the constructor of each paymentprocessors types the different input type, in this case security code for both credit and debit and e-mail for paypal
+
+
+In the class PaymentProcessor if we add another method, for example sms authentication, we can just implement it in the sub classes and that's it.
+The problem is that the credit card doesn't have two factor authentication, therefore the implementation will be empty or will throw an error.
+- This will break the Interface Segragation principle, it states that instead of having a huge interface with multiple methods we should separate them into smaller ones.
