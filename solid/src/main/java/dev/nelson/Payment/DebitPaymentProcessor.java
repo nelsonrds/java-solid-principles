@@ -2,13 +2,14 @@ package dev.nelson.Payment;
 
 import dev.nelson.Order;
 import dev.nelson.OrderStatus;
+import dev.nelson.Authorizer.Authorizer;
 
 public class DebitPaymentProcessor implements PaymentProcessor {
 
     private final String securityCode;
-    private final SMSAuth smsAuth;
+    private final Authorizer smsAuth;
 
-    public DebitPaymentProcessor(final String securityCode, SMSAuth auth) {
+    public DebitPaymentProcessor(final String securityCode, Authorizer auth) {
         this.securityCode = securityCode;
         this.smsAuth = auth;
     }

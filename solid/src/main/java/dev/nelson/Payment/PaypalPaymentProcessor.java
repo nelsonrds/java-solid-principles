@@ -2,13 +2,14 @@ package dev.nelson.Payment;
 
 import dev.nelson.Order;
 import dev.nelson.OrderStatus;
+import dev.nelson.Authorizer.Authorizer;
 
 public class PaypalPaymentProcessor implements PaymentProcessor {
 
     private final String emailAddress;
-    private final SMSAuth smsAuth;
+    private final Authorizer smsAuth;
 
-    public PaypalPaymentProcessor(final String emailAddress, final SMSAuth smsAuth) {
+    public PaypalPaymentProcessor(final String emailAddress, final Authorizer smsAuth) {
         this.emailAddress = emailAddress;
         this.smsAuth = smsAuth;
     }

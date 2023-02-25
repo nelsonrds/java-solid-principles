@@ -23,3 +23,6 @@ Instead of creating a new interface to handle different cases, we can use compos
 - Interface Segregation variety using composition.
 Create a new class that handls the authentication and remove the interface PaymentProcessorSms.
 
+Now we have a problem, our paymentprocessors implementation classes are repending on a class and not on an abstraction/interface.
+- This violates the dependency inversion principle.
+To fix that we can create an interface and implement the method isAuthorized. This way we can add multiple authorization types.

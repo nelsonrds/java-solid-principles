@@ -1,9 +1,11 @@
 package dev.nelson;
 
+import dev.nelson.Authorizer.Authorizer;
+import dev.nelson.Authorizer.NotARobot;
+import dev.nelson.Authorizer.SMSAuth;
 import dev.nelson.Payment.DebitPaymentProcessor;
 import dev.nelson.Payment.PaymentProcessor;
 import dev.nelson.Payment.PaypalPaymentProcessor;
-import dev.nelson.Payment.SMSAuth;
 
 public class App {
     public static void main(String[] args) {
@@ -15,8 +17,8 @@ public class App {
 
         System.out.println(order.totalPrice());
 
-        SMSAuth smsAuth = new SMSAuth();
-        smsAuth.verify_code("code1234");
+        NotARobot smsAuth = new NotARobot();
+        smsAuth.notARobot();
 
         PaymentProcessor paymentProcessor = new PaypalPaymentProcessor("e@hi.t", smsAuth);
         paymentProcessor.pay(order);
